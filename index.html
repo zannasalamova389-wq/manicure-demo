@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Демо — запись на маникюр (регистрация + оплата)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Маникюр • демо-запись</h1>
+    <p>Регистрация + имитация оплаты. Данные хранятся в браузере.</p>
+  </header>
+
+  <main>
+    <!-- Блок авторизации -->
+    <div class="card" id="authCard">
+      <div class="demo-warn">
+        ⚠️ Демо-режим: пароли хранятся в открытом виде. Никогда не используйте реальные пароли.
+      </div>
+
+      <div class="auth-tabs">
+        <button id="tabLogin" class="active">Вход</button>
+        <button id="tabRegister">Регистрация</button>
+      </div>
+
+      <!-- Форма входа -->
+      <div id="loginForm">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com">
+
+        <label for="loginPassword">Пароль</label>
+        <input type="password" id="loginPassword" placeholder="••••••">
+
+        <button id="doLogin">Войти</button>
+        <div id="loginMsg" class="msg"></div>
+      </div>
+
+      <!-- Форма регистрации -->
+      <div id="registerForm" class="hidden">
+        <label for="regName">Имя</label>
+        <input id="regName" placeholder="Анна">
+
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" placeholder="you@example.com">
+
+        <label for="regPassword">Пароль</label>
+        <input type="password" id="regPassword" placeholder="••••••">
+
+        <button id="doRegister">Зарегистрироваться</button>
+        <div id="regMsg" class="msg"></div>
+      </div>
+    </div>
+
+    <!-- Блок записи (скрыт, пока не вошли) -->
+    <div id="bookingSection" class="hidden">
+      <div class="card">
+        <div class="user-bar">
+          <span>Вы вошли как <strong id="currentUserName"></strong></span>
+          <button id="logoutBtn" class="btn-small">Выйти</button>
+        </div>
+
+        <h2>Запись</h2>
+
+        <label for="service">Услуга</label>
+        <select id="service">
+          <option value="">Выберите услугу</option>
+        </select>
+
+        <label for="master">Мастер</label>
+        <select id="master">
+          <option value="">Выберите мастера</option>
+        </select>
+
+        <div class="row">
+          <div>
+            <label for="date">Дата</label>
+            <input type="date" id="date">
+          </div>
+          <div>
+            <label for="time">Время</label>
+            <select id="time">
+              <option value="">Сначала выберите дату и мастера</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="phone">Телефон</label>
+        <input id="phone" type="tel" placeholder="+7 999 123-45-67">
+
+        <button id="submitBtn">Перейти к оплате</button>
+        <div id="bookingMsg" class="msg"></div>
+      </div>
+
+      <!-- Блок демо-оплаты -->
+      <div class="card hidden" id="paymentCard">
+        <h2>Демо-оплата</h2>
+        <p class="hint">
+          Введите любые данные. Для «успешной» оплаты можно использовать тестовый номер
+          <strong>4242 4242 4242 4242</strong>, срок действия — любой будущий,
+          CVC — любые 3 цифры.
+        </p>
+
+        <label for="cardNumber">Номер карты</label>
+        <input id="cardNumber" placeholder="4242 4242 4242 4242" maxlength="19">
+
+        <div class="row">
+          <div>
+            <label for="cardExpiry">Срок</label>
+            <input id="cardExpiry" placeholder="12/28" maxlength="5">
+          </div>
+          <div>
+            <label for="cardCvc">CVC</label>
+            <input id="cardCvc" placeholder="123" maxlength="3">
+          </div>
+        </div>
+
+        <button id="payBtn">Оплатить (демо)</button>
+        <div id="payMsg" class="msg"></div>
+      </div>
+
+      <!-- Мои записи -->
+      <div class="card">
+        <h2>Мои записи</h2>
+        <div id="bookings" class="bookings">Пока нет записей</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
